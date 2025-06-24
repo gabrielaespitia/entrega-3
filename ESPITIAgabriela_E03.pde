@@ -4,7 +4,7 @@
 
 int numNubes = 13;
 
-// variables 
+// variables
 float[] nubeX;
 float[] nubeY;
 
@@ -16,12 +16,12 @@ void setup() {
   size(1000, 1000);
   noStroke();
   colorMode(HSB, 360, 100, 100);
-  
+
   // Posiciones iniciales aleatorias para las nubes y tamaños array
   nubeX = new float[numNubes];
   nubeY = new float[numNubes];
   nubeDebajo = new boolean[numNubes];
-  
+
   // valores
   for (int i = 0; i < numNubes; i++) {
     nubeX[i] = random(width);
@@ -34,8 +34,8 @@ void setup() {
 }
 
 void draw() {
-  
- // Cielo, azul que oscurece gradualmente (atardecer)
+
+  // Cielo, azul que oscurece gradualmente (atardecer)
   float brightness = map(frameCount, 0, 2000, 100, 20);
   brightness = constrain(brightness, 20, 100); // para evitar que cambie el color bajando más.
   background(210, 50, brightness);  // azul en HSB
@@ -47,37 +47,37 @@ void draw() {
   for (int i = 0; i < 6; i++) {
     ellipse(nubeX[i], nubeY[i], 180, 120);
     ellipse(nubeX[i] + 60, nubeY[i] + 15, 150, 105);
-    ellipse(nubeX[i] - 60, nubeY[i] + 15, 150, 105); 
+    ellipse(nubeX[i] - 60, nubeY[i] + 15, 150, 105);
   }
 
 
-// sombra avion
+  // sombra avion
 
-fill(0, 0, 0, 40);  // gris oscuro con transparencia
-noStroke();
+  fill(0, 0, 0, 40);  // gris oscuro con transparencia
+  noStroke();
 
-// cuerpo
-ellipse(500 + 15, 500 + 15, 60, 330); 
+  // cuerpo
+  ellipse(500 + 15, 500 + 15, 60, 330);
 
-// alas
-triangle(280 + 15, 490 + 15, 490 + 15, 430 + 15, 480 + 15, 480 + 15);
-triangle(720 + 15, 490 + 15, 510 + 15, 430 + 15, 520 + 15, 481 + 15);
+  // alas
+  triangle(280 + 15, 490 + 15, 490 + 15, 430 + 15, 480 + 15, 480 + 15);
+  triangle(720 + 15, 490 + 15, 510 + 15, 430 + 15, 520 + 15, 481 + 15);
 
-// cola
-triangle(423 + 15, 665 + 15, 495 + 15, 635 + 15, 492 + 15, 660 + 15);
-triangle(576 + 15, 665 + 15, 505 + 15, 635 + 15, 508 + 15, 660 + 15);
+  // cola
+  triangle(423 + 15, 665 + 15, 495 + 15, 635 + 15, 492 + 15, 660 + 15);
+  triangle(576 + 15, 665 + 15, 505 + 15, 635 + 15, 508 + 15, 660 + 15);
 
-// luces
-rect(385 + 15, 450 + 15, 20, 20);
-rect(420 + 15, 440 + 15, 20, 20);
-rect(595 + 15, 450 + 15, 20, 20);
-rect(560 + 15, 440 + 15, 20, 20);
+  // luces
+  rect(385 + 15, 450 + 15, 20, 20);
+  rect(420 + 15, 440 + 15, 20, 20);
+  rect(595 + 15, 450 + 15, 20, 20);
+  rect(560 + 15, 440 + 15, 20, 20);
 
 
   // Avion
   float brilloAvion = map(frameCount, 0, 2000, 90, 60); // con map, bajar el brillo de 90 a 60 hasta el frame 200
   brilloAvion = constrain(brilloAvion, 30, 90);
-  fill(0, 0, brilloAvion); 
+  fill(0, 0, brilloAvion);
 
   // cuerpo alas y cola del avion
   noStroke();
@@ -94,24 +94,24 @@ rect(560 + 15, 440 + 15, 20, 20);
   rect(595, 450, 20, 20);
   rect(560, 440, 20, 20);
 
-// sombra avion encima
+  // sombra avion encima
 
-float brilloProfundidad = map(frameCount, 0, 2000, 85, 35);  
-brilloProfundidad = constrain(brilloProfundidad, 35, 95); // oscurecer gradualmente tambien
+  float brilloProfundidad = map(frameCount, 0, 2000, 85, 35);
+  brilloProfundidad = constrain(brilloProfundidad, 35, 95); // oscurecer gradualmente tambien
 
-fill(0, 0, brilloProfundidad); 
-ellipse(505, 500, 43, 330);  // mismo centro, mismo largo, mitad de alto
+  fill(0, 0, brilloProfundidad);
+  ellipse(505, 500, 43, 330);  // mismo centro, mismo largo, mitad de alto
 
 
   //  nubes encima, iguales que las de abajo
   fill(0, 0, brightness); // blanco gradual
   for (int i = 6; i < numNubes; i++) {
-    ellipse(nubeX[i], nubeY[i], 180, 120);              
-    ellipse(nubeX[i] + 60, nubeY[i] + 15, 150, 105);    
+    ellipse(nubeX[i], nubeY[i], 180, 120);
+    ellipse(nubeX[i] + 60, nubeY[i] + 15, 150, 105);
     ellipse(nubeX[i] - 60, nubeY[i] + 15, 150, 105);
   }
 
-  
+
 
   //  Movimiento de TODAS las nubes hacia abajo lentamente.
   for (int i = 0; i < numNubes; i++) {
